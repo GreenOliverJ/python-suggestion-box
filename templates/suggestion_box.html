@@ -1,0 +1,27 @@
+<!-- suggestion_box/templates/suggestion_box.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestion Box</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <h1>Suggestion Box</h1>
+    <form action="{% url 'add_suggestion' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="suggestion" placeholder="Enter your suggestion">
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Current Suggestions</h2>
+    <ul>
+        {% for suggestion in suggestions %}
+        <li>{{ suggestion }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
